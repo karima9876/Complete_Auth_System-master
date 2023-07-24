@@ -1,0 +1,115 @@
+@host = http://127.0.0.1:8000/api
+
+@token = eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMmI4YTE5MDdkMjk3MzUwMTgzMTNkOTUyYjE2MWE1ZGU3NDZlNTc1Mzk0Mjg4YzFjZjZkZmI5M2E3MGI0MjQ4N2VhN2I4YThjNzAxOWJjZDYiLCJpYXQiOjE2OTAwODE5MjYuMzMxMTI4LCJuYmYiOjE2OTAwODE5MjYuMzMxMTMyLCJleHAiOjE3MjE3MDQzMjYuMzIxMjU0LCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.LjxlMAdRHT-Cnkh4gifnsfswDCShqwTzNxYHlUXyBQbDonF-TL3uhlcglR-cuQ9nYHz1CdqGMfmPL3DNbhVsZ-d-Xij_XsKLbr43JlMmN2CKgwo8-f6Ga_DMwE4jBRpQ5W43haXXLkymPcGpJksxKGq96KpPClvzA84pSxpTXWWMtzvgs-v8d9PzjduzY9ATLhZIObxkewnL7xXppzONttK6rJbXgUB8wUqh1EFgkuibiJmuuiCPYhGChTwgt7nWbcMxKwuQ5k29ThQKwejpdDRttL7KKbniHfsllVyEHKbT1cYwZMJd_z_Kp9r5rari6AuIvRPe49vKwqCZHM84b3FdS3Kq_X6oGei3DIZ1uKzpsdXogIxoiHco9FH3kbHTIFnwdY-A6_wDRrJ5PepRSZwyNiMRtCCd3V5CDabCEtjVDkSpG4hc_IOIyEkRgt_17Xr5gPAVN_zc-PnL3bfs3-W_esQYtQz3k5fRYFaV0w8q-OkeZucgXGj9Bx5iVIU8fda7BUBhkrodymyiG8sy6tv8_E-tRMz7TQ0Onm8RvovX4f77VVDvZThlRZGr7mujVvHTOjhGZEFkHqju6z1m0NoOCbGfbxrZWoc71edjKdS2YIaGHVEe2Z77Fm6jpJnWvhJSyE2VGVMxkRXfLcrVZkW4NnJRJIywXduYL3TZ6JM
+##get user
+GET {{host}}/auth/user HTTP/1.1
+Content-Type: application/json
+
+{
+
+}
+
+################
+## login user
+POST {{host}}/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "moon10@gmail.com",
+  "password": "123456"
+
+}
+
+
+################
+## Register user
+POST {{host}}/auth/register HTTP/1.1
+Content-Type: application/json
+role: employee
+
+{
+  "name": "karima",
+  "email": "moon10@gmail.com",
+  "password": "123456"
+  //"roll": "employee"
+}
+
+
+################
+## Otp verify
+POST {{host}}/auth/verify-otp HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+ "otp": "388466"
+}
+
+
+################
+## Otp Re-verify
+POST {{host}}/auth/resendOtp HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+
+
+}
+
+
+################
+## Forget password
+POST {{host}}/auth/forget-password HTTP/1.1
+Content-Type: application/json
+
+{
+ "email": "jaman4@gmail.com"
+}
+
+################
+## verify-Forget password
+POST {{host}}/auth/verify-forget-password HTTP/1.1
+Content-Type: application/json
+
+{
+ "otp": " 8797423",
+ "email": "jaman4@gmail.com"
+}
+
+################
+## Reset-Forget password
+POST {{host}}/auth/reset-password HTTP/1.1
+Content-Type: application/json
+
+{
+    "token": "4989650",
+    "email": "jaman11@gmail.com",
+    "password": "123454445",
+    "password_confirmation": "123454445"
+}
+
+################
+## Change password
+POST {{host}}/auth/change-password HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "old_password": "234566",
+    "new_password": "234565",
+    "new_password_confirmation": "234565"
+}
+
+################
+## Logout
+POST {{host}}/auth/logout HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+
+}
+
+
+
